@@ -1,0 +1,1 @@
+(()=>{"use strict";const a={appId:"f1b5ac37",appKey:"b1c54486120f8a90b98e7dbf36794f7f"};!function(p){const e=`https://api.edamam.com/api/food-database/v2/parser?app_id=${a.appId}&app_key=${a.appKey}&ingr=broccoli`;fetch(e,{method:"GET",dataType:"json"}).then((a=>a.json())).then((a=>console.log(a)))}()})();
