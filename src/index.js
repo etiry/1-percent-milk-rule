@@ -1,11 +1,11 @@
 import config from '../config';
 
 const Food = (data) => {
-  const getFood = (food) => {
-    if (!food.parsed) {
-      return food.hints[0].food;
+  const getFood = (myFood) => {
+    if (!myFood.parsed) {
+      return myFood.hints[0].food;
     }
-    return food.parsed[0].food;
+    return myFood.parsed[0].food;
   };
 
   const calculateProteinRatio = (food) => {
@@ -22,6 +22,7 @@ const Food = (data) => {
   const getFoodDetails = (food) => ({
     id: food.foodId,
     name: food.label,
+    image: food.image,
     calories: food.nutrients.ENERC_KCAL,
     protein: food.nutrients.PROCNT,
     isProteinFood: calculateProteinRatio(food),
@@ -41,8 +42,16 @@ const renderResult = (food) => {
 
   result.replaceChildren();
 
+  const emoji = String.fromCodePoint('0x1F4AA');
+
+  const proteinFood = food.food.isProteinFood ? `Protein food! ${emoji}` : 'Not a protein food';
+
   const template = `
-    <h1> ${food.food.isProteinFood} </h1>`;
+    <div class="col-md-4 offset-md-4">
+      <h1>${proteinFood}</h1>
+      <img src=${food.food.image}>
+      <h3>${food.food.name}</h3>
+    </div>`;
 
   result.innerHTML = template;
 };
