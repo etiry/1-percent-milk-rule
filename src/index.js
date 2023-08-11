@@ -42,15 +42,16 @@ const renderResult = (food) => {
 
   result.replaceChildren();
 
-  const emoji = String.fromCodePoint('0x1F4AA');
+  const flexedBicepEmoji = String.fromCodePoint('0x1F4AA');
+  const sadFaceEmoji = String.fromCodePoint('0x1F641');
 
-  const proteinFood = food.food.isProteinFood ? `Protein food! ${emoji}` : 'Not a protein food';
+  const proteinFood = food.food.isProteinFood ? `Protein food! ${flexedBicepEmoji}` : `Not a protein food ${sadFaceEmoji}`;
 
   const template = `
-    <div class="col-md-4 offset-md-4">
-      <h1>${proteinFood}</h1>
-      <img src=${food.food.image}>
-      <h3>${food.food.name}</h3>
+    <div class="col-md-4 offset-md-4 p-4">
+      <h1 class="p-4">${proteinFood}</h1>
+      <img src=${food.food.image} class="rounded-circle">
+      <h3 class="p-4">${food.food.name}</h3>
     </div>`;
 
   result.innerHTML = template;
