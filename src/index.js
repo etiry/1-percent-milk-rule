@@ -68,4 +68,10 @@ const fetchFood = (query) => {
     .then((result) => renderResult(result));
 };
 
-fetchFood('Parmesan');
+document.querySelector('#btnFetch').addEventListener('click', () => {
+  const searchTerm = document.querySelector('#search-query').value;
+
+  fetchFood(searchTerm);
+
+  document.querySelector('#search-query').value = '';
+});
